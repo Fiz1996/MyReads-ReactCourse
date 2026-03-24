@@ -1,4 +1,5 @@
 import Bookshelf from "./Bookshelf";
+import {Link} from "react-router-dom";
 
 function MainPage({ books, isLoading, onOpen, onMoveBook }) {
     const currentlyReading = books.filter(
@@ -50,9 +51,9 @@ function MainPage({ books, isLoading, onOpen, onMoveBook }) {
             </div>
 
             <div className="open-search">
-                <button type="button" onClick={onOpen} className="fab" aria-label="Add a book" >
+                <Link to="/search" className="fab" aria-label="Add a book" >
                     +
-                </button>
+                </Link>
             </div>
         </div>
     );

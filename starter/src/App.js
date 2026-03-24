@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import * as BooksAPI from "./BooksAPI";
 import MainPage from "./components/MainPage";
 import SearchPage from "./components/SearchPage";
+import { Routes, Route } from "react-router-dom";
+
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -13,7 +15,6 @@ function App() {
 
 
   useEffect(() => {
-    console.log("Theme changed to:", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -71,20 +72,28 @@ function App() {
       </button>
       {error && <p style={{ padding: "1rem" }}>{error}</p>}
 
-      {isSearchPageOpen ? (
-        <SearchPage
-          books={books}
-          onClose={() => setIsSearchPageOpen(false)}
-          onMoveBook={handleMoveBook}
+      <Routes>
+        <Route path="/"
+          element={
+            <MainPage
+              books={books}
+              isLoading={isLoading}
+              onOpen={() => setIsSearchPageOpen(true)}
+              onMoveBook={handleMoveBook}
+            />
+          }
         />
-      ) : (
-        <MainPage
-          books={books}
-          isLoading={isLoading}
-          onOpen={() => setIsSearchPageOpen(true)}
-          onMoveBook={handleMoveBook}
+        <Route path="/search"
+          element={
+            <SearchPage
+              books={books}
+              onClose={() => setIsSearchPageOpen(false)}
+              onMoveBook={handleMoveBook}
+            />
+          }
         />
-      )}
+
+      </Routes>
     </div>
   );
 }
