@@ -65,6 +65,42 @@ body,
   font-size: 0;
 }
 
+/* Floating Action Button */
+.fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: #2e7d32;
+  color: white;
+
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+
+.fab:hover {
+  background-color: #5e1b1b;
+  transform: scale(1.05);
+}
+
+/* Click effect */
+.fab:active {
+  transform: scale(0.95);
+}
+
 /* search page */
 
 .search-books-bar {
