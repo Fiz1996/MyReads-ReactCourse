@@ -8,9 +8,53 @@ body {
 }
 body,
 .app {
-  background: white;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f5;
+  --text: #1f2937;
+  --muted-text: #6b7280;
+  --primary: #2e7d32;
+  --primary-hover: #1b5e20;
+  --border: #d1d5db;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+
+.app.theme-dark {
+  --bg: #111827;
+  --surface: #1f2937;
+  --surface-2: #111827;
+  --text: #f9fafb;
+  --muted-text: #d1d5db;
+  --primary: #4ade80;
+  --primary-hover: #22c55e;
+  --border: #374151;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
 /* main page */
 
 .list-books-title {

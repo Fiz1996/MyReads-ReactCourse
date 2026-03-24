@@ -9,6 +9,13 @@ function App() {
   const [isSearchPageOpen, setIsSearchPageOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+
+
+  useEffect(() => {
+    console.log("Theme changed to:", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const loadBooks = async () => {
@@ -51,8 +58,17 @@ function App() {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
   return (
-    <div className="app">
+    <div className={`app theme-${theme}`}>
+      <button
+        type="button"
+        onClick={toggleTheme} className="theme-toggle">
+        {theme === "light" ? "Dark Mode" : "Light Mode"}
+      </button>
       {error && <p style={{ padding: "1rem" }}>{error}</p>}
 
       {isSearchPageOpen ? (
